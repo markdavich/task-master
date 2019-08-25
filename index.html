@@ -11,9 +11,92 @@
 </head>
 
 <body>
+    <form onsubmit="app.controllers.listController.addList(event)" class="input-group mb-3">
+        <input type="text" class="form-control" name="newListName" placeholder="List Name"
+            aria-describedby="button-create-list">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="button-create-list">Create</button>
+        </div>
+        <div class="container-fluid">
+            <div id="lists" class="row" name="lists">
 
+                <div class="col-12 col-sm-4 col-lg-4 card border-secondary mb-3" name="list1">
+                    <div class="card-header">Header</div>
+                    <div class="input-group mb-3">
+                        <input type="text" placeholder="New List Item" class="form-control" name="newList1">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-success">Add</button>
+                        </div>
+                    </div>
+                    <div class="card-body text-secondary" name="listItems1">
 
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" aria-label="Checkbox for following text input">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with checkbox" readonly>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-danger">X</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" aria-label="Checkbox for following text input">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with checkbox" readonly>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-danger">X</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" aria-label="Checkbox for following text input">
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Text input with checkbox" readonly>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-danger">X</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
     <script src="app/main.js" type="module"></script>
 </body>
 
 </html>
+
+<!-- List Template -->
+<!-- <div class="col-12 col-sm-4 col-lg-4 card border-secondary mb-3" name="list1">
+    <div class="card-header">Header</div>
+    <div class="input-group mb-3">
+        <input type="text" placeholder="New List Item" class="form-control" name="newList1">
+        <div class="input-group-append">
+            <button type="button" class="btn btn-success">Add</button>
+        </div>
+    </div>
+    <div class="card-body text-secondary" name="listItems1"></div>
+</div> -->
+
+<!-- List Item Template -->
+<!-- <div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <input type="checkbox" aria-label="Checkbox for following text input">
+        </div>
+    </div>
+    <input type="text" class="form-control" aria-label="Text input with checkbox" readonly>
+    <div class="input-group-append">
+        <button type="button" class="btn btn-danger">X</button>
+    </div>
+</div> -->

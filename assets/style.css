@@ -1,0 +1,13 @@
+.delete-list {
+  float: right;
+  margin-right: -20px;
+  opacity: 0.50;
+}
+
+.header {
+  width: 80%;
+  font-size: 1.53em;
+  border: solid rgba(0, 0, 0, 0.267) 1px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}

@@ -1,3 +1,5 @@
+import ToDoItem from "./ToDoItem.js";
+
 export default class List {
     //TODO You will need to create a constructor 
     //and the methods needed to create the view template for this model
@@ -10,7 +12,14 @@ export default class List {
     constructor(data) {
         this.index = data.index
         this.title = data.title
-        this.toDoItems = data.toDoItems || []
+        this._toDo = data.toDoItems || []
+
+        this.toDoItems = []
+
+        this._toDo.forEach((item) => {
+            let toDo = ToDoItem.item(item.title, item.done)
+            this.toDoItems.push(new ToDoItem(this, toDo))
+        })
     }
 
     listName() {
@@ -49,7 +58,7 @@ export default class List {
                 <div class="input-group mb-3">
                     <input type="text" placeholder="New List Item" class="form-control" id="${this.newListInputName()}">
                     <div class="input-group-append">
-                        <button onclick="app.controllers.listController.addItem(event, ${this.index})" type="button" class="btn btn-success">Add</button>
+                        <button onclick="app.controllers.listController.addItem(${this.index})" type="button" class="btn btn-success">Add</button>
                     </div>
                 </div>
                 <div class="card-body text-secondary" name="${this.toDoItemsName()}">

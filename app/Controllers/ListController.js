@@ -10,6 +10,7 @@ function _drawLists() {
 
     let template = ``
     let lists = _listService.Lists
+
     lists.forEach((list) => {
         template += list.getTemplate()
     })
@@ -42,9 +43,9 @@ export default class ListController {
         _drawLists()
     }
 
-    addItem(event, index) {
+    addItem(listIndex) {
         event.preventDefault()
-        _listService.addToDoItem(event, index)
+        _listService.addToDoItem(listIndex)
         _drawLists()
     }
 

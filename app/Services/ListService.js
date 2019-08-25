@@ -44,12 +44,13 @@ export default class ValuesService {
 
         this.saveLists()
     }
-    addToDoItem(event, index) {
-        let list = _state.lists[index]
+    addToDoItem(listIndex) {
+        let list = new List(_state.lists[listIndex])
         let inputName = list.newListInputName()
         let title = document.getElementById(inputName).value
+        let toDo = ToDoItem.item(title, false)
         debugger
-        list.toDoItems.push(new ToDoItem(list, title))
+        _state.lists[listIndex].toDoItems.push(new ToDoItem(list, toDo))
         this.saveLists()
     }
     deleteToDoItem(listIndex, itemIndex) {
@@ -71,7 +72,6 @@ export default class ValuesService {
 
     //NOTE call saved list everytime you change the list collection in any way
     saveLists() {
-        debugger
         localStorage.setItem('lists', JSON.stringify(_state.lists))
     }
 

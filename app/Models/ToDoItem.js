@@ -1,14 +1,15 @@
 import { CONSTANTS } from '../Constants/constants.js'
 
 export default class ToDoItem {
-  constructor(list, itemDescription) {
-    this.list = list
+  constructor(list, data) {
+    this.listIndex = list.index
     this.index = list.toDoItems.length
-    this.title = itemDescription
+    this.title = data.title
+    this.done = data.done
   }
 
   listName() {
-    return `list${this.list.index}`
+    return `list${this.listIndex}`
   }
 
   prependListName(str) {
@@ -24,7 +25,11 @@ export default class ToDoItem {
   }
 
   deleteClick() {
-    return `onclick = "${CONSTANTS.CONTROLLER}.${CONSTANTS.REMOVE_ITEM}(${this.list.index}, ${this.index})"`
+    return `onclick = "${CONSTANTS.CONTROLLER}.${CONSTANTS.REMOVE_ITEM}(${this.listIndex}, ${this.index})"`
+  }
+
+  getChecked() {
+    this.done ? 'checked' : ''
   }
 
   getTemplate() {
@@ -32,7 +37,7 @@ export default class ToDoItem {
       <div class="input-group mb-3" name="${this.listItemName()}">
           <div class="input-group-prepend">
               <div class="input-group-text">
-                  <input type="checkbox" name="${this.checkBoxName()}">
+                  <input type="checkbox" name="${this.checkBoxName()}" ${this.getChecked()}>
               </div>
           </div>
           <input type="text" class="form-control" placeholder="${this.title}" readonly>
@@ -41,5 +46,12 @@ export default class ToDoItem {
           </div>
       </div>
     `
+  }
+
+  static item(title, done) {
+    return {
+      title: title,
+      done: done
+    }
   }
 }

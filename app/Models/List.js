@@ -47,9 +47,9 @@ export default class List {
             <div class="col-12 col-sm-4 col-lg-4 card border-secondary mb-3" name="${this.listName()}">
                 ${this.getHeader()}
                 <div class="input-group mb-3">
-                    <input type="text" placeholder="New List Item" class="form-control" name="${this.newListInputName()}">
+                    <input type="text" placeholder="New List Item" class="form-control" id="${this.newListInputName()}">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-success">Add</button>
+                        <button onclick="app.controllers.listController.addItem(event, ${this.index})" type="button" class="btn btn-success">Add</button>
                     </div>
                 </div>
                 <div class="card-body text-secondary" name="${this.toDoItemsName()}">

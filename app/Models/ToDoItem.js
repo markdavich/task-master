@@ -1,7 +1,9 @@
+import { CONSTANTS } from '../Constants/constants.js'
+
 export default class ToDoItem {
   constructor(list, itemDescription) {
     this.list = list
-    this.index = list.toDoItes.length
+    this.index = list.toDoItems.length
     this.title = itemDescription
   }
 
@@ -21,8 +23,8 @@ export default class ToDoItem {
     return this.prependListName(`Done${this.index}`)
   }
 
-  remove() {
-    this.list.removeToDoItem(this)
+  deleteClick() {
+    return `onclick = "${CONSTANTS.CONTROLLER}.${CONSTANTS.REMOVE_ITEM}(${this.list.index}, ${this.index})"`
   }
 
   getTemplate() {
@@ -35,7 +37,7 @@ export default class ToDoItem {
           </div>
           <input type="text" class="form-control" placeholder="${this.title}" readonly>
           <div class="input-group-append">
-              <button type="button" class="btn btn-danger">X</button>
+              <button ${this.deleteClick()} type="button" class="btn btn-danger">X</button>
           </div>
       </div>
     `

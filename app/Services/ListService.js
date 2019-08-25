@@ -1,4 +1,5 @@
 import List from "../Models/List.js";
+import ToDoItem from "../Models/ToDoItem.js"
 
 //Private
 let _state = {
@@ -43,11 +44,22 @@ export default class ValuesService {
 
         this.saveLists()
     }
-    addToDoItem() {
-
+    addToDoItem(event, index) {
+        let list = _state.lists[index]
+        let inputName = list.newListInputName()
+        let title = document.getElementById(inputName).value
+        debugger
+        list.toDoItems.push(new ToDoItem(list, title))
+        this.saveLists()
     }
-    deleteToDoItem(toDoItem) {
+    deleteToDoItem(listIndex, itemIndex) {
+        let toDoItems = _state.lists[listIndex].toDoItems
 
+        toDoItems.splice(itemIndex, 1)
+        toDoItems.forEach((item, index) => {
+            item.index = index
+        });
+        this.saveLists()
     }
 
     get Lists() {
@@ -59,6 +71,7 @@ export default class ValuesService {
 
     //NOTE call saved list everytime you change the list collection in any way
     saveLists() {
+        debugger
         localStorage.setItem('lists', JSON.stringify(_state.lists))
     }
 

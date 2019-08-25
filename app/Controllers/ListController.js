@@ -41,4 +41,16 @@ export default class ListController {
         _listService.removeList(index)
         _drawLists()
     }
+
+    addItem(event, index) {
+        event.preventDefault()
+        _listService.addToDoItem(event, index)
+        _drawLists()
+    }
+
+    removeItem(listIndex, itemIndex) {
+        event.preventDefault()
+        _listService.deleteToDoItem(listIndex, itemIndex)
+        _drawLists()
+    }
 }

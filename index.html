@@ -11,12 +11,16 @@
 </head>
 
 <body>
-    <form onsubmit="app.controllers.listController.addList(event)" class="input-group mb-3">
-        <input type="text" class="form-control" name="newListName" placeholder="List Name"
-            aria-describedby="button-create-list">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-create-list">Create</button>
+    <form onsubmit="app.controllers.listController.addList(event)">
+        <div class="input-group m-3">
+            <input type="text" class="form-control" name="newListName" placeholder="List Name"
+                aria-describedby="button-create-list">
+            <div class="input-group-append">
+                <button style="margin-right: 30px;" class="btn btn-outline-secondary" type="submit"
+                    id="button-create-list">Create</button>
+            </div>
         </div>
+
         <div class="container-fluid">
             <div id="lists" class="row" name="lists">
 

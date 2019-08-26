@@ -1,15 +1,19 @@
 .delete-list {
   float: right;
-  margin-right: -20px;
+  margin-right: -10px;
   opacity: 0.50;
 }
 
 .header {
-  width: 80%;
   font-size: 1.53em;
-  border: solid rgba(0, 0, 0, 0.267) 1px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.list {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.644);
+  padding: 5px;
+  margin-bottom: 15px;
 }
 
 .checked {

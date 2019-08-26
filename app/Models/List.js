@@ -44,25 +44,27 @@ export default class List {
 
     getHeader() {
         return `
-            <div class="card-header">
+            <div class="card-header header">
                 ${this.title}
-                <button onclick="app.controllers.listController.removeList(${this.index})" type="button" class="btn btn-danger delete-list">x</button>
+                <button onclick="app.controllers.listController.removeList(${this.index})" type="button" class="btn-sm btn btn-danger delete-list">x</button>
             </div>
         `
     }
 
     getTemplate(index) {
         let template = `
-            <div class="col-12 col-sm-4 col-lg-4 card border-secondary mb-3" name="${this.listName()}">
-                ${this.getHeader()}
-                <div class="input-group mb-3">
-                    <input type="text" placeholder="New List Item" class="form-control" id="${this.newListInputName()}">
-                    <div class="input-group-append">
-                        <button onclick="app.controllers.listController.addItem(${this.index})" type="button" class="btn btn-success">Add</button>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4" name="${this.listName()}">
+                <div class="list card border-secondary">
+                    ${this.getHeader()}
+                    <div class="input-group mb-3">
+                        <input type="text" placeholder="New List Item" class="form-control" id="${this.newListInputName()}">
+                        <div class="input-group-append">
+                            <button onclick="app.controllers.listController.addItem(${this.index})" type="button" class="btn btn-success">Add</button>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body text-secondary" name="${this.toDoItemsName()}">
-                    ${this.getToDoTemplate()}
+                    <div class="card-body text-secondary" name="${this.toDoItemsName()}">
+                        ${this.getToDoTemplate()}
+                    </div>
                 </div>
             </div>
         `

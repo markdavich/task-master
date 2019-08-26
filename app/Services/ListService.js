@@ -35,6 +35,18 @@ export default class ValuesService {
         _state.lists.push(new List(data))
         this.saveLists()
     }
+
+    getList(index) {
+        return new List(_state.lists[index])
+    }
+
+    getListItem(listIndex, itemIndex) {
+        let list = this.getList(listIndex)
+        let item = list.toDoItems[itemIndex]
+
+        return ToDoItem.item(item.title, item.done)
+    }
+
     removeList(index) {
         _state.lists.splice(index, 1)
 

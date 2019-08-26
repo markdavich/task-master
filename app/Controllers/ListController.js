@@ -1,4 +1,6 @@
 import ListService from "../Services/ListService.js";
+import List from "../Models/List.js"
+
 
 //Private
 let _listService = new ListService()
@@ -15,6 +17,13 @@ function _drawLists() {
         template += list.getTemplate()
     })
     listContainer.innerHTML = template
+}
+
+function _removeObject(obj) {
+    debugger
+    let objName = (obj instanceof List) ? 'list' : 'item'
+    let msg = `Do you want to delete the "${obj.title}" ${objName}?`
+    return confirm(msg)
 }
 
 
@@ -39,8 +48,11 @@ export default class ListController {
 
     removeList(index) {
         event.preventDefault()
-        _listService.removeList(index)
-        _drawLists()
+
+        if (_removeObject(_listService.getList(index))) {
+            _listService.removeList(index)
+            _drawLists()
+        }
     }
 
     addItem(listIndex) {
@@ -51,8 +63,10 @@ export default class ListController {
 
     removeItem(listIndex, itemIndex) {
         event.preventDefault()
-        _listService.deleteToDoItem(listIndex, itemIndex)
-        _drawLists()
+        if (_removeObject(_listService.getListItem(listIndex, itemIndex))) {
+            _listService.deleteToDoItem(listIndex, itemIndex)
+            _drawLists()
+        }
     }
 
     doneClick(event, listIndex, itemIndex) {

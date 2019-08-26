@@ -49,7 +49,6 @@ export default class ValuesService {
         let inputName = list.newListInputName()
         let title = document.getElementById(inputName).value
         let toDo = ToDoItem.item(title, false)
-        debugger
         _state.lists[listIndex].toDoItems.push(new ToDoItem(list, toDo))
         this.saveLists()
     }
@@ -65,6 +64,11 @@ export default class ValuesService {
 
     get Lists() {
         return _state.lists.map(list => new List(list))
+    }
+
+    doneClick(event, listIndex, itemIndex) {
+        _state.lists[listIndex].toDoItems[itemIndex].done = event.target.checked
+        this.saveLists()
     }
 
 

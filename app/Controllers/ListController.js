@@ -54,4 +54,10 @@ export default class ListController {
         _listService.deleteToDoItem(listIndex, itemIndex)
         _drawLists()
     }
+
+    doneClick(event, listIndex, itemIndex) {
+        event.preventDefault()
+        _listService.doneClick(event, listIndex, itemIndex)
+        _drawLists()
+    }
 }

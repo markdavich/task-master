@@ -29,7 +29,15 @@ export default class ToDoItem {
   }
 
   getChecked() {
-    this.done ? 'checked' : ''
+    return this.done ? 'checked' : ''
+  }
+
+  getDoneClick() {
+    return `onchange = "${CONSTANTS.CONTROLLER}.${CONSTANTS.DONE_CLICK}(event, ${this.listIndex}, ${this.index})"`
+  }
+
+  getStyle() {
+    return this.done ? 'checked' : ''
   }
 
   getTemplate() {
@@ -37,10 +45,10 @@ export default class ToDoItem {
       <div class="input-group mb-3" name="${this.listItemName()}">
           <div class="input-group-prepend">
               <div class="input-group-text">
-                  <input type="checkbox" name="${this.checkBoxName()}" ${this.getChecked()}>
+                  <input ${this.getDoneClick()} type="checkbox" name="${this.checkBoxName()}" ${this.getChecked()}>
               </div>
           </div>
-          <input type="text" class="form-control" placeholder="${this.title}" readonly>
+          <input type="text" class="form-control ${this.getStyle()}" value="${this.title}" readonly>
           <div class="input-group-append">
               <button ${this.deleteClick()} type="button" class="btn btn-danger">X</button>
           </div>

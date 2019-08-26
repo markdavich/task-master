@@ -11,3 +11,9 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+
+.checked {
+  color: rgb(22, 177, 22);
+  text-decoration: line-through;
+  font-weight: bold;
+}
